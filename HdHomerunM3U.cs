@@ -36,6 +36,12 @@ namespace HdHomerunM3U
                     continue;
                 }
 
+                if (arg.ToLower() == "-?" || arg.ToLower() == "-h" || arg.ToLower() == "-help")
+                {
+                    DisplayHelp();
+                    return;
+                }
+
                 switch (arg.Substring(0, arg.IndexOf('=')).ToLower())
                 {
                     case "-deviceid":
@@ -46,12 +52,6 @@ namespace HdHomerunM3U
                     case "-out":
                         txtOutputFile = arg.Substring(arg.IndexOf('=') + 1).Trim();
                         break;
-
-                    case "-?":
-                    case "-h":
-                    case "-help":
-                        DisplayHelp();
-                        return;
 
                     default:
                         paramsOK = false;

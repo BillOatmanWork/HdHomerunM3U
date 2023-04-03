@@ -76,8 +76,9 @@ namespace HdHomerunM3U
             try
             {
                 //  Uri uri = new Uri("http://my.hdhomerun.com/api/guide.php?DeviceAuth=" + discovery.DeviceAuth);
-                string url = discovery.BaseURL.Substring(0, discovery.BaseURL.LastIndexOf(':'));
-                Uri uri = new Uri(url + "/lineup.json");
+                //string url = discovery.BaseURL.Substring(0, discovery.BaseURL.LastIndexOf(':'));
+                //Uri uri = new Uri(url + "/lineup.json");
+                Uri uri = new Uri(discovery.LineupURL);
                 HttpClient http = new HttpClient();
                 byte[] result = http.GetByteArrayAsync(uri).Result;
                 json = Encoding.UTF8.GetString(result);
