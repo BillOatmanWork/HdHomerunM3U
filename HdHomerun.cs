@@ -1,11 +1,9 @@
-﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net.Http;
 using System.Text;
-using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace HdHomerunM3U
 {
@@ -87,7 +85,6 @@ namespace HdHomerunM3U
                 //    file.Write(JsonPrettify(json));
                 //}
                 return JsonConvert.DeserializeObject<List<HdHomerunChannel>>(json);
-
 
             }
             catch (Exception e)

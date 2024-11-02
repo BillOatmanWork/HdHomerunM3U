@@ -1,20 +1,14 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Text;
 
 namespace HdHomerunM3U
 {
-    class HdHomerunM3U
+    sealed class HdHomerunM3U
     {
         static void Main(string[] args)
-        {
-            // Get out of making everything static
-            HdHomerunM3U p = new HdHomerunM3U();
-            p.RealMain(args);
-        }
-
-        public void RealMain(string[] args)
         {
             bool doAll = false;
             int channelCount = 0;
@@ -22,14 +16,14 @@ namespace HdHomerunM3U
             Console.WriteLine("HdHomerunM3U version " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version);
             Console.WriteLine("");
 
-            string txtOutputFile =   Path.Combine(System.AppContext.BaseDirectory + "HdHomerun.m3u");
+            string txtOutputFile = Path.Combine(System.AppContext.BaseDirectory + "HdHomerun.m3u");
             string selectedDevice = string.Empty;
 
             // Read in params
             bool paramsOK = true;
             foreach (string arg in args)
             {
-                if(arg.ToLower() == "-all")
+                if (arg.ToLower() == "-all")
                 {
                     doAll = true;
                     Console.WriteLine("Processing all channels.");
@@ -68,7 +62,7 @@ namespace HdHomerunM3U
             Console.WriteLine("Out: " + txtOutputFile);
             Console.WriteLine("");
 
-            List<HdHomerunDevice> deviceList = null;
+            List<HdHomerunDevice> deviceList;
             try
             {
                 deviceList = HdHomerun.GetHdHomerunDeviceList();
@@ -130,7 +124,8 @@ namespace HdHomerunM3U
                     }
 
                     Console.WriteLine("");
-                    Console.WriteLine("Complete. File " + txtOutputFile + " created with " + channelCount.ToString() + " channels.");
+
+                    Console.WriteLine("Complete. File " + txtOutputFile + " created with " + channelCount.ToString(CultureInfo.InvariantCulture) + " channels.");
                     Console.WriteLine("");
                 }
 
@@ -143,7 +138,7 @@ namespace HdHomerunM3U
             }
         }
 
-        public void DisplayHelp()
+        public static void DisplayHelp()
         {
             Console.WriteLine("");
             Console.WriteLine("Parameters: (Case Insensitive)");
