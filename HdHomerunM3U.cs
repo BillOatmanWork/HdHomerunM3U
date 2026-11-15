@@ -148,7 +148,7 @@ namespace HdHomerunM3U
             Console.WriteLine("Out=[Optional] The fully qualified path where the m3u file that will be created. Default: OTA.m3u in the HdHomerunM3U directory.");
             Console.WriteLine("");
 
-            string example = @"HdHomerunM3U -DeviceID=123456 -Out=#C:\MyDirectory\dummy.m3u# ";
+            string example = @"HdHomerunM3U -DeviceID=123456 -Out=C:\MyDirectory\dummy.m3u";
 
             Console.WriteLine("Example: " + example.Replace('#', '"'));
             Console.WriteLine("");

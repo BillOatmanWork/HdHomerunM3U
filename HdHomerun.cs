@@ -22,7 +22,7 @@ namespace HdHomerunM3U
 
             try
             {
-                Uri uri = new Uri("http://my.hdhomerun.com/discover");
+                Uri uri = new Uri("https://api.hdhomerun.com/discover");
                 HttpClient http = new HttpClient();
                 byte[] result = http.GetByteArrayAsync(uri).Result;
 
